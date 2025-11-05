@@ -143,7 +143,7 @@ io.on('connection', (socket) => {
         } else {
             const currentPlayerIndex = game.players.findIndex(p => p.id === player.id);
             const nextPlayerIndex = (currentPlayerIndex + 1) % game.players.length;
-            setNextTurn(game, game.players[nextPlayerIndex].id);
+            setNextTurn(game, gameCode, game.players[nextPlayerIndex].id);
         }
     });
 
@@ -211,10 +211,10 @@ function startNewRound(game, gameCode) {
 function startTrick(game, gameCode, startingPlayerId) {
     game.currentTrick = [];
     io.to(gameCode).emit('newTrick', { startingPlayerId });
-    setNextTurn(game, startingPlayerId);
+    setNextTurn(game, gameCode, startingPlayerId);
 }
 
-function setNextTurn(game, playerId) {
+function setNextTurn(game, gameCode, playerId) {
     const player = game.players.find(p => p.id === playerId);
     game.currentTurn = { playerId: player.id, username: player.username };
     const leadSuit = game.currentTrick.length > 0 ? game.currentTrick[0].card.suit : null;
