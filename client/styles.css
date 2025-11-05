@@ -1,0 +1,51 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-align: center;
+    background-color: #1a542b;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+.container { max-width: 900px; margin: auto; }
+h1, h2, h3, h4 { font-weight: 300; }
+#game-container { margin-top: 20px; padding: 30px; background-color: rgba(0, 0, 0, 0.2); border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+.hidden { display: none; }
+input, select, button { padding: 12px 18px; margin: 8px 4px; border-radius: 6px; border: none; font-size: 16px; background-color: #f0f0f0; color: #333; }
+button { background-color: #cda434; color: #111; cursor: pointer; transition: background-color 0.2s; font-weight: bold; }
+button:hover { background-color: #e0b440; }
+hr { border: none; border-top: 1px solid rgba(255, 255, 255, 0.2); margin: 20px 0; }
+#player-list { list-style: none; padding: 0; text-align: left; max-width: 300px; margin: 20px auto; }
+#player-list li { background: rgba(255, 255, 255, 0.1); padding: 10px 15px; border-radius: 4px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+#start-game-btn { background-color: #4CAF50; color: white; }
+.kick-btn { padding: 5px 10px; font-size: 12px; background-color: #d9534f; color: white; }
+.error { color: #f44336; font-weight: bold; margin-top: 15px; min-height: 20px;}
+
+/* Game Board */
+#game-board { display: grid; grid-template-areas: "scoreboard" "table" "hand" "bidding" "info"; gap: 15px; }
+#scoreboard { grid-area: scoreboard; }
+#table { grid-area: table; min-height: 250px; background: rgba(0,0,0,0.15); border-radius: 50%; padding: 15px; position: relative; width: 400px; height: 400px; margin: 20px auto; }
+#player-hand-area { grid-area: hand; }
+#bidding-controls { grid-area: bidding; }
+#game-info { grid-area: info; min-height: 40px; font-size: 1.2em; }
+.player-spot { position: absolute; text-align: center; transform: translate(-50%, -50%); }
+.player-spot.disconnected .username { text-decoration: line-through; color: #999; }
+.player-bid-info { font-size: 14px; background: rgba(0,0,0,0.4); padding: 4px 8px; border-radius: 4px; margin-top: 4px;}
+.player-spot .card-count { font-size: 12px; color: #ccc; }
+
+/* Cards */
+#player-hand { display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; }
+.card { width: 60px; height: 85px; border: 1px solid #555; border-radius: 5px; background-color: white; color: black; display: flex; flex-direction: column; justify-content: space-between; padding: 4px; font-size: 18px; font-weight: bold; box-shadow: 2px 2px 5px rgba(0,0,0,0.3); user-select: none; }
+.card.suit-♠, .card.suit-♣ { color: black; }
+.card.suit-♥, .card.suit-♦ { color: red; }
+.card.playable { cursor: pointer; border: 2px solid #cda434; box-shadow: 0 0 15px #e0b440; }
+.card.playable:hover { transform: translateY(-12px) scale(1.05); }
+
+.played-card-container { position: absolute; transform: translate(-50%, -50%); }
+.played-card-container .card { cursor: default; }
+.played-card-container .card:hover { transform: none; }
+.winning-card .card { border: 3px solid lightgreen; box-shadow: 0 0 20px lightgreen; }
+
+.game-over-screen { padding: 40px; text-align: center; }
+.game-over-screen h2 { font-size: 2.5em; color: #cda434; }
+.game-over-screen h3 { font-size: 1.8em; margin-bottom: 30px; }
+.final-scores { font-size: 1.2em; line-height: 1.6; margin-bottom: 40px; }

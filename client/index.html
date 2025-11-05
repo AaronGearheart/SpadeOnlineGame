@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spades Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Spades Online</h1>
+        <div id="game-container">
+            <div id="home-screen">
+                <h2>Welcome!</h2>
+                <input type="text" id="username-input" placeholder="Enter your username" maxlength="12">
+                <button id="create-game-btn">Create Game</button>
+                <hr>
+                <input type="text" id="game-code-input" placeholder="Enter game code" maxlength="5">
+                <button id="join-game-btn">Join Game</button>
+            </div>
+
+            <div id="create-game-options" class="hidden">
+                <h3>Game Settings</h3>
+                <label for="player-count">Number of Players:</label>
+                <select id="player-count"><option value="4">4</option><option value="6">6</option></select>
+                <br>
+                <label for="win-score">Winning Score:</label>
+                <select id="win-score"><option value="300">300</option><option value="500">500</option></select>
+                <br><br>
+                <button id="confirm-create-btn">Create</button>
+            </div>
+
+            <div id="lobby-screen" class="hidden">
+                <h2>Lobby</h2>
+                <p>Game Code: <strong id="game-code-display"></strong></p>
+                <h3>Players (<span id="player-current-count"></span>/<span id="player-max-count"></span>)</h3>
+                <ul id="player-list"></ul>
+                <button id="start-game-btn" class="hidden">Start Game</button>
+            </div>
+
+            <div id="game-board" class="hidden">
+                <div id="scoreboard"></div>
+                <div id="table"></div>
+                <div id="player-hand-area">
+                    <h3>Your Hand</h3>
+                    <div id="player-hand"></div>
+                </div>
+                <div id="bidding-controls" class="hidden">
+                    <h4>Place Your Bid</h4>
+                    <select id="bid-select"></select>
+                    <button id="submit-bid-btn">Submit Bid</button>
+                </div>
+                <div id="game-info"></div>
+            </div>
+        </div>
+        <p id="error-message" class="error"></p>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
